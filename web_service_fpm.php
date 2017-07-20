@@ -2,7 +2,7 @@
 require_once "nusoap/nusoap.php";
 
 function insertData($tabla,$data){
-	$connexio = @new mysqli("localhost", "escolapo_rodrigo", "R._})gT(h0VS","escolapo_cal_profesionales");
+	$connexio = @new mysqli("localhost", "root", "","calpro");
 	if ($connexio->connect_error)
     	return false;
 

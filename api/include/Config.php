@@ -2,10 +2,10 @@
 /**
  * Database configuration
  */
-define('DB_USERNAME', 'escolapo_rodrigo');
-define('DB_PASSWORD', 'R._})gT(h0VS');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'escolapo_cal_profesionales');
+define('DB_NAME', 'calpro');
 
 //referencia generado con MD5(uniqueid(<some_string>, true))
 define('API_KEY','3d524a53c110e4c22463b10ed32cef9d');
