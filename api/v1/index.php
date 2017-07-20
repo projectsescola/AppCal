@@ -82,17 +82,6 @@ $app->get('/practicas', function(){
     echoResponse($resultados[0], $resultados[1]);
 });
 
-/* Usando POST para insertar registros */
-
-// Añadir profesor
-
-$app->post('/addprofesor', 'authenticate', function() use ($app) {
-
-    $resultados = insertInto("tabpatrons", array('patroid', 'nombre', 'dni', 'telefono', 'email', 'titulo'), $app );
-
-    echoResponse($resultados[0], $resultados[1]);
-});
-
 /* corremos la aplicación */
 $app->run();
 
@@ -131,40 +120,6 @@ function getResult($db,$tabla){
     }else{
         return array(404, "No hay registros");
     }
-}
-
-/**
- * Generar un array con el resultado de la consulta a la base de datos
- */
-
-function insertInto($tabla,$columnas,$app){
-    // check for required params
-    verifyRequiredParams( $columnas );
-
-    $response = array();
-    $param = array();
-
-    //capturamos los parametros recibidos y los almacenamos como un nuevo array
-    foreach ($columnas as $nombre) {
-        $param[$nombre] = $app->request->post($nombre);
-    }
-    
-    /* Podemos inicializar la conexion a la base de datos si queremos hacer uso de esta para procesar los parametros con DB */
-    $db = new DbHandler();
-
-    /* Podemos crear un metodo que almacene el nuevo auto, por ejemplo: */
-    $db->insertData($tabla,$param);
-
-    if ( is_array($param) ) {
-        $response["error"] = false;
-        $response["message"] = "Auto creado satisfactoriamente!";
-        $response["auto"] = $param;
-    } else {
-        $response["error"] = true;
-        $response["message"] = "Error al crear auto. Por favor intenta nuevamente.";
-    }
-
-    return array(201, $response);
 }
 
 /**

@@ -1,0 +1,71 @@
+<md-dialog>
+    <form ng-cloak>
+         
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Crear Calendario</h2>
+            </div>
+        </md-toolbar>
+ 
+        <md-dialog-content>
+            <div class="md-dialog-content"> 
+                <!-- we are using ng-model to bind this view and the 'product model -->
+                <md-input-container class="md-block">
+                    <label>Tipo</label>
+                    <input ng-model="tipo">
+                </md-input-container>
+ 
+                <md-input-container class="md-block">
+                    <label>Descripcion</label>
+                    <input ng-model="descripcion">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Practica ID</label>
+                    <input ng-model="curso_practica_id">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Barco ID</label>
+                    <input ng-model="escuela_barco_id">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Patrón ID</label>
+                    <input ng-model="patron_id">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Capacidad?</label>
+                    <input ng-model="capacidad_maxima">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Alumnos?</label>
+                    <input ng-model="alumnos_apuntados">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Observaciones</label>
+                    <input ng-model="observaciones">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Estado</label>
+                    <input ng-model="estado">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Modalidad</label>
+                    <input ng-model="modalidad_horario">
+                </md-input-container>
+ 
+            </div>
+        </md-dialog-content>
+ 
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">Cancelar</md-button>
+            <md-button ng-click="createCalendario()" class="md-primary">Crear</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
