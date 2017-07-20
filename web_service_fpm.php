@@ -1,8 +1,10 @@
 <?php
+
 require_once "nusoap/nusoap.php";
+require_once "web_service_config.php";
 
 function insertData($tabla,$data){
-	$connexio = @new mysqli("localhost", "root", "","calpro");
+	$connexio = @new mysqli(DB_HOST_FPM, DB_USERNAME_FPM, DB_PASSWORD_FPM, DB_NAME_FPM);
 	if ($connexio->connect_error)
     	return false;
 
@@ -40,8 +42,24 @@ function insertData($tabla,$data){
 	return $resultado;
 }
 
+function truncateTable($tabla){
+    $connexio = @new mysqli(DB_HOST_FPM, DB_USERNAME_FPM, DB_PASSWORD_FPM, DB_NAME_FPM);
+    if ($connexio->connect_error)
+        return false;
+
+    $query = "TRUNCATE TABLE ".$tabla;
+
+    if($connexio->query($query)){
+        $connexio->close();
+        return true;
+    }else{
+        return false;
+    }
+}
+
 $server = new soap_server();
 $server->register("insertData");
+$server->register("truncateTable");
 $server->soap_defencoding = 'UTF-8';
 $server->encode_utf8 = true;
 $HTTP_RAW_POST_DATA = file_get_contents("php://input");
